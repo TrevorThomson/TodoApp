@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "entrypoints"
+version = "0.1.0"
+description = ""
+authors = ["Trevor Thomson <tgt@trevorthomson.com>"]
+readme = "README.md"
+packages = [{include = "entrypoints", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+sqlalchemy = "^2.0.31"
+alembic = "^1.13.2"
+pydantic = "^2.7.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
