@@ -28,7 +28,7 @@ def upgrade() -> None:
         sa.Column("is_complete", sa.Boolean(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
-    op.create_index(op.f("ix_todo_id"), "todos", ["id"], unique=False)
+    op.create_index(op.f("ix_todo_id"), "todos", ["id"], unique=True)
 
 
 def downgrade() -> None:
