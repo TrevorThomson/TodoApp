@@ -10,7 +10,7 @@ class TodoModel(BaseModel):
     title: str
     description: str = ""
     priority: int
-    is_completed: bool
+    is_complete: bool
 
     @staticmethod
     def from_db_model(todo: TodoTable | List[TodoTable]):

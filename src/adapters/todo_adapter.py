@@ -33,7 +33,7 @@ class TodoAdaptor(TodoPort):
             todo_to_update.title = todo.title
             todo_to_update.description = todo.description
             todo_to_update.priority = todo.priority
-            todo_to_update.is_completed = todo.is_completed
+            todo_to_update.is_complete = todo.is_complete
 
             db.add(todo_to_update)
             db.commit()

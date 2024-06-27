@@ -39,4 +39,4 @@ class TodoTable(Base):
     title = Column(String)
     description = Column(String)
     priority = Column(Integer)
-    is_completed = Column(Boolean, default=False)
+    is_complete = Column(Boolean, default=False)

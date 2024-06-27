@@ -17,8 +17,9 @@ def get_todo_by_id(id: str):
 
 @router.post("/create")
 def create_todo(todo_model: TodoModel):
-    todo_id = str(uuid.uuid4)
-    todo_service.create(todo=TodoModel(**todo_model.model_dump(), id=todo_id))
+    todo_id = str(uuid.uuid4())
+    todo_model.id = todo_id
+    todo_service.create(todo=todo_model)
     return {f"Todo Created with id: {todo_id}"}
 
 @router.put("/update")
