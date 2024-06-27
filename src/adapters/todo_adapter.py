@@ -7,7 +7,7 @@ from typing import List
 from adapters.db.schema import TodoTable, DBSession
 from domain.ports.todo import TodoPort
 
-class TodoAdaptor(TodoPort):
+class TodoAdapter(TodoPort):
     def __init__(self) -> None:
         self.db_session = DBSession()
     
@@ -28,7 +28,7 @@ class TodoAdaptor(TodoPort):
         with self.db_session.get_db() as db:
             todo_to_update = self.get_todo_by_id(todo_id=str(todo.id))
             if todo_to_update is None:
-                raise ValueError("Error: Item no found")
+                raise ValueError("Error: Item not found")
             
             todo_to_update.title = todo.title
             todo_to_update.description = todo.description
