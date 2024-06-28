@@ -1,8 +1,37 @@
 
-from fastapi import APIRouter
+import uuid
+from fastapi import APIRouter, status
+from domain.todo.model import TodoModel
+from domain.todo.service import TodoService
 
 router = APIRouter()
+todo_service = TodoService()
 
 @router.get("/")
 def get_all_todo():
-    return {"message" : "hello"}
+    return todo_service.get_all()
+
+@router.get("/{id}")
+def get_todo_by_id(id: str):
+    return todo_service.get_todo_by_id(todo_id=id)
+
+@router.post("/create")
+def create_todo(todo_model: TodoModel):
+    todo_id = str(uuid.uuid4())
+    todo_model.id = todo_id
+    todo_service.create(todo=todo_model)
+    return {f"Todo Created with id: {todo_id}"}
+
+@router.put("/update")
+def update_todo(todo_model: TodoModel):
+    todo_service.update(todo=todo_model)
+    return {f"Todo Updated, id: {todo_model.id}"}
+
+@router.delete("/delete/{id}")
+def delete_todo_by_id(id: str):
+    todo_service.delete_todo_by_id(todo_id=id)
+    return {f"Todo Deleted, id: {id}"}
+
+
+
+
